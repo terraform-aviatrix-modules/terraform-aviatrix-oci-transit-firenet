@@ -17,7 +17,7 @@ resource "aviatrix_transit_gateway" "default" {
   vpc_reg                          = var.region
   gw_name                          = local.name
   gw_size                          = var.instance_size
-  vpc_id                           = aviatrix_vpc.default.name 
+  vpc_id                           = aviatrix_vpc.default.name
   account_name                     = var.account
   subnet                           = local.subnet
   ha_subnet                        = var.ha_gw ? local.ha_subnet : null
@@ -43,7 +43,7 @@ resource "aviatrix_firewall_instance" "firewall_instance" {
   count                  = var.ha_gw ? 0 : 1
   firewall_name          = "${local.name}-fw"
   firewall_size          = var.fw_instance_size
-  vpc_id                 = aviatrix_vpc.default.name 
+  vpc_id                 = aviatrix_vpc.default.name
   firewall_image         = var.firewall_image
   firewall_image_version = var.firewall_image_version
   egress_subnet          = aviatrix_vpc.default.public_subnets[2].cidr
@@ -58,7 +58,7 @@ resource "aviatrix_firewall_instance" "firewall_instance_1" {
   count                  = var.ha_gw ? 1 : 0
   firewall_name          = "${local.name}-fw1"
   firewall_size          = var.fw_instance_size
-  vpc_id                 = aviatrix_vpc.default.name 
+  vpc_id                 = aviatrix_vpc.default.name
   firewall_image         = var.firewall_image
   firewall_image_version = var.firewall_image_version
   egress_subnet          = aviatrix_vpc.default.public_subnets[2].cidr
@@ -73,7 +73,7 @@ resource "aviatrix_firewall_instance" "firewall_instance_2" {
   count                  = var.ha_gw ? 1 : 0
   firewall_name          = "${local.name}-fw2"
   firewall_size          = var.fw_instance_size
-  vpc_id                 = aviatrix_vpc.default.name 
+  vpc_id                 = aviatrix_vpc.default.name
   firewall_image         = var.firewall_image
   firewall_image_version = var.firewall_image_version
   egress_subnet          = aviatrix_vpc.default.public_subnets[0].cidr
@@ -85,7 +85,7 @@ resource "aviatrix_firewall_instance" "firewall_instance_2" {
 }
 
 resource "aviatrix_firenet" "firenet" {
-  vpc_id                               = aviatrix_vpc.default.name 
+  vpc_id                               = aviatrix_vpc.default.name
   inspection_enabled                   = var.inspection_enabled
   egress_enabled                       = var.egress_enabled
   manage_firewall_instance_association = false
@@ -94,7 +94,7 @@ resource "aviatrix_firenet" "firenet" {
 
 resource "aviatrix_firewall_instance_association" "firenet_instance" {
   count                = var.ha_gw ? 0 : 1
-  vpc_id               = aviatrix_vpc.default.name 
+  vpc_id               = aviatrix_vpc.default.name
   firenet_gw_name      = aviatrix_transit_gateway.default.gw_name
   instance_id          = aviatrix_firewall_instance.firewall_instance[0].instance_id
   firewall_name        = aviatrix_firewall_instance.firewall_instance[0].firewall_name
@@ -106,7 +106,7 @@ resource "aviatrix_firewall_instance_association" "firenet_instance" {
 
 resource "aviatrix_firewall_instance_association" "firenet_instance1" {
   count                = var.ha_gw ? 1 : 0
-  vpc_id               = aviatrix_vpc.default.name 
+  vpc_id               = aviatrix_vpc.default.name
   firenet_gw_name      = aviatrix_transit_gateway.default.gw_name
   instance_id          = aviatrix_firewall_instance.firewall_instance_1[0].instance_id
   firewall_name        = aviatrix_firewall_instance.firewall_instance_1[0].firewall_name
@@ -118,7 +118,7 @@ resource "aviatrix_firewall_instance_association" "firenet_instance1" {
 
 resource "aviatrix_firewall_instance_association" "firenet_instance2" {
   count                = var.ha_gw ? 1 : 0
-  vpc_id               = aviatrix_vpc.default.name 
+  vpc_id               = aviatrix_vpc.default.name
   firenet_gw_name      = "${aviatrix_transit_gateway.default.gw_name}-hagw"
   instance_id          = aviatrix_firewall_instance.firewall_instance_2[0].instance_id
   firewall_name        = aviatrix_firewall_instance.firewall_instance_2[0].firewall_name
