@@ -1,7 +1,9 @@
-# Terraform Aviatrix OCI Transit
+# Terraform Aviatrix OCI Transit FireNet
 
 ### Description
 This module deploys a VCN and an Aviatrix transit gateway and NGFW. Defining the Aviatrix Terraform provider is assumed upstream and is not part of this module.
+
+**_Note_** Ensure that you are subscribed to the Firewall offering in OCI Marketplace
 
 ### Compatibility
 Module version | Terraform version | Controller version | Terraform provider version
