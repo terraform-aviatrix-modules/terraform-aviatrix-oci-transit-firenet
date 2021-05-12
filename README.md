@@ -52,7 +52,9 @@ suffix | true | Boolean to enable suffix name with -transit
 enable_segmentation | false | Switch to true to enable transit segmentation
 single_az_ha | true | Set to false if Controller managed Gateway HA is desired
 single_ip_snat | false | Enable single_ip mode Source NAT for this container
-enable_advertise_transit_cidr  | false | Switch to enable/disable advertise transit VPC network CIDR for a VGW connection
+enable_advertise_transit_cidr  | false | Switch to enable/disable advertise transit 
+enable_multi_tier_transit | false | Switch to enable multi tier transit
+VPC network CIDR for a VGW connection
 bgp_polling_time  | 50 | BGP route polling time. Unit is in seconds
 bgp_ecmp  | false | Enable Equal Cost Multi Path (ECMP) routing for the next hop
 firewall_image | Palo Alto Networks VM-Series Next-Generation Firewall (BYOL) | The firewall image to be used to deploy the NGFW's
