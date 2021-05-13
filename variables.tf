@@ -1,20 +1,3 @@
-variable "username" {
-  type    = string
-  default = ""
-}
-
-variable "password" {
-  type    = string
-  default = ""
-}
-
-variable "controller_ip" {
-  type    = string
-  default = ""
-}
-
-### Test FireNet Vars
-
 variable "region" {
   description = "The OCI region to deploy this module in"
   type        = string
@@ -114,7 +97,7 @@ variable "connected_transit" {
   default     = true
 }
 
-variable "enable_multi_tier_transit " {
+variable "enable_multi_tier_transit" {
   description = "Set to true to enable multi tier transit."
   type        = bool
   default     = false
