@@ -20,7 +20,7 @@ v4.0.0 | 0.13, 0.14 | >=6.4 | >=2.19
 # OCI Transit FireNet Module
 module "oci_transit_firenet_1" {
   source      = "terraform-aviatrix-modules/oci-transit-firenet/aviatrix"
-  version     = "4.0.2"
+  version     = "4.0.3"
   cidr        = "10.10.0.0/16"
   region      = "us-ashburn-1"
   account     = "My-OCI-Access-Account" 
