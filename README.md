@@ -58,6 +58,7 @@ bgp_polling_time  | 50 | BGP route polling time. Unit is in seconds
 bgp_ecmp  | false | Enable Equal Cost Multi Path (ECMP) routing for the next hop
 firewall_image | Palo Alto Networks VM-Series Next-Generation Firewall (BYOL) | The firewall image to be used to deploy the NGFW's
 firewall_image_version | 10.0.4 | The firewall image version specific to the NGFW vendor image
+inspection_enabled | true | Set to false to disable inspection on the firewall instances
 insane_mode | false | Set to true to enable insane mode encryption
 
 Outputs
