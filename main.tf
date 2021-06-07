@@ -85,9 +85,9 @@ resource "aviatrix_firewall_instance" "firewall_instance_2" {
 }
 
 resource "aviatrix_firenet" "firenet" {
-  vpc_id                               = aviatrix_vpc.default.name
-  inspection_enabled                   = var.inspection_enabled
-  egress_enabled                       = var.egress_enabled
+  vpc_id             = aviatrix_vpc.default.name
+  inspection_enabled = var.inspection_enabled
+  egress_enabled     = var.egress_enabled
   manage_firewall_instance_association = false
   depends_on                           = [aviatrix_firewall_instance_association.firenet_instance, aviatrix_firewall_instance_association.firenet_instance1, aviatrix_firewall_instance_association.firenet_instance2]
 }
