@@ -5,10 +5,13 @@ This module deploys a Aviatrix Transit FireNet VCN and an Aviatrix transit gatew
 
 **_Note_** Ensure that you are subscribed to the Firewall offering in OCI Marketplace
 
+**_OCI Regions containing multiple Availabilty Domains_** ```us-ashburn-1, us-phoenix-1, uk-london-1, eu-frankfurt-1```
+
 ### Compatibility
 Module version | Terraform version | Controller version | Terraform provider version
 :--- | :--- | :--- | :---
-v4.0.0 | 0.13, 0.14 | >=6.4 | >=2.19
+v4.0.4 | 0.13, 0.14, 0.15 | >=6.4 | 2.19.5
+v4.0.3 | 0.13, 0.14, 0.15 | >=6.4 | 2.19.4
 
 
 ### Diagram
@@ -20,7 +23,7 @@ v4.0.0 | 0.13, 0.14 | >=6.4 | >=2.19
 # OCI Transit FireNet Module
 module "oci_transit_firenet_1" {
   source      = "terraform-aviatrix-modules/oci-transit-firenet/aviatrix"
-  version     = "4.0.3"
+  version     = "4.04"
   cidr        = "10.10.0.0/16"
   region      = "us-ashburn-1"
   account     = "My-OCI-Access-Account" 
@@ -58,6 +61,7 @@ bgp_polling_time  | 50 | BGP route polling time. Unit is in seconds
 bgp_ecmp  | false | Enable Equal Cost Multi Path (ECMP) routing for the next hop
 firewall_image | Palo Alto Networks VM-Series Next-Generation Firewall (BYOL) | The firewall image to be used to deploy the NGFW's
 firewall_image_version | 10.0.4 | The firewall image version specific to the NGFW vendor image
+keep_alive_via_lan_interface_enabled | false | Enable Keep Alive via Firewall LAN Interface
 inspection_enabled | true | Set to false to disable inspection on the firewall instances
 insane_mode | false | Set to true to enable insane mode encryption
 

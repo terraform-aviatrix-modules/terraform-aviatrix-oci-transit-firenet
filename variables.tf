@@ -193,6 +193,12 @@ variable "enable_egress_transit_firenet" {
   default     = false
 }
 
+variable "keep_alive_via_lan_interface_enabled" {
+  description = "Enable Keep Alive via Firewall LAN Interface"
+  type        = bool
+  default     = false
+}
+
 variable "insane_mode" {
   type    = bool
   default = false
@@ -205,12 +211,9 @@ locals {
   prefix        = var.prefix ? "avx-" : ""
   suffix        = var.suffix ? "-firenet" : ""
   name          = "${local.prefix}${local.lower_name}${local.suffix}"
-  #subnet        = aviatrix_vpc.default.public_subnets[0].cidr
-  #ha_subnet     = aviatrix_vpc.default.public_subnets[0].cidr
-  cidrbits  = tonumber(split("/", var.cidr)[1])
-  newbits   = 26 - local.cidrbits
-  netnum    = pow(2, local.newbits)
-  subnet    = var.insane_mode ? cidrsubnet(var.cidr, local.newbits, local.netnum - 2) : aviatrix_vpc.default.public_subnets[0].cidr
-  ha_subnet = var.insane_mode ? cidrsubnet(var.cidr, local.newbits, local.netnum - 1) : aviatrix_vpc.default.public_subnets[0].cidr
-
+  cidrbits      = tonumber(split("/", var.cidr)[1])
+  newbits       = 26 - local.cidrbits
+  netnum        = pow(2, local.newbits)
+  subnet        = var.insane_mode ? cidrsubnet(var.cidr, local.newbits, local.netnum - 2) : aviatrix_vpc.default.public_subnets[0].cidr
+  ha_subnet     = var.insane_mode ? cidrsubnet(var.cidr, local.newbits, local.netnum - 1) : aviatrix_vpc.default.public_subnets[0].cidr
 }
