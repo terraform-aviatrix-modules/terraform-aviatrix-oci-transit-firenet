@@ -37,7 +37,12 @@ resource "aviatrix_transit_gateway" "default" {
   enable_egress_transit_firenet    = var.enable_egress_transit_firenet
   local_as_number                  = var.local_as_number
   enable_bgp_over_lan              = var.enable_bgp_over_lan
+  availability_domain              = aviatrix_vpc.default.availability_domains[0]
+  fault_domain                     = aviatrix_vpc.default.fault_domains[0]
+  ha_availability_domain           = var.ha_gw ? aviatrix_vpc.default.availability_domains[1] : null
+  ha_fault_domain                  = var.ha_gw ? aviatrix_vpc.default.fault_domains[1] : null
 }
+
 
 resource "aviatrix_firewall_instance" "firewall_instance" {
   count                  = var.ha_gw ? 0 : 1
@@ -52,6 +57,8 @@ resource "aviatrix_firewall_instance" "firewall_instance" {
   bootstrap_storage_name = var.bootstrap_storage_name
   storage_access_key     = var.storage_access_key
   file_share_folder      = var.file_share_folder
+  availability_domain    = aviatrix_vpc.default.availability_domains[0]
+  fault_domain           = aviatrix_vpc.default.fault_domains[0]
 }
 
 resource "aviatrix_firewall_instance" "firewall_instance_1" {
@@ -67,6 +74,8 @@ resource "aviatrix_firewall_instance" "firewall_instance_1" {
   bootstrap_storage_name = var.bootstrap_storage_name
   storage_access_key     = var.storage_access_key
   file_share_folder      = var.file_share_folder
+  availability_domain    = aviatrix_vpc.default.availability_domains[0]
+  fault_domain           = aviatrix_vpc.default.fault_domains[0]
 }
 
 resource "aviatrix_firewall_instance" "firewall_instance_2" {
@@ -82,6 +91,8 @@ resource "aviatrix_firewall_instance" "firewall_instance_2" {
   bootstrap_storage_name = var.bootstrap_storage_name
   storage_access_key     = var.storage_access_key
   file_share_folder      = var.file_share_folder
+  availability_domain    = aviatrix_vpc.default.availability_domains[1]
+  fault_domain           = aviatrix_vpc.default.fault_domains[1]
 }
 
 resource "aviatrix_firenet" "firenet" {
@@ -89,6 +100,7 @@ resource "aviatrix_firenet" "firenet" {
   inspection_enabled                   = var.inspection_enabled
   egress_enabled                       = var.egress_enabled
   manage_firewall_instance_association = false
+  keep_alive_via_lan_interface_enabled = var.keep_alive_via_lan_interface_enabled
   depends_on                           = [aviatrix_firewall_instance_association.firenet_instance, aviatrix_firewall_instance_association.firenet_instance1, aviatrix_firewall_instance_association.firenet_instance2]
 }
 
