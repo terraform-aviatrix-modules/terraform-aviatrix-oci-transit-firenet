@@ -70,7 +70,7 @@ This module will return the following objects:
 
 key | description
 --- | ---
-vcn | The created VCN as an object with all of it's attributes. This was created using the aviatrix_vpc resource.
-transit_gateway | The created Aviatrix transit gateway as an object with all of it's attributes.
-aviatrix_firenet | The Aviatrix firenet object with all of it's attributes.
-aviatrix_firewall_instance | A list with the created firewall instances and their attributes.
+[vcn](https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs/resources/aviatrix_vpc) | The created VCN as an object with all of it's attributes. This was created using the aviatrix_vpc resource.
+[transit_gateway](https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs/resources/aviatrix_transit_gateway) | The created Aviatrix transit gateway as an object with all of it's attributes.
+[aviatrix_firenet](https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs/resources/aviatrix_firenet) | The created Aviatrix firenet object with all of it's attributes.
+[aviatrix_firewall_instance](https://registry.terraform.io/providers/AviatrixSystems/aviatrix/latest/docs/resources/aviatrix_firewall_instance) | A list of the created firewall instances and their attributes.
