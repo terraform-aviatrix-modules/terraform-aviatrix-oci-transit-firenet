@@ -58,13 +58,13 @@ variable "suffix" {
 variable "firewall_image" {
   description = "The firewall image to be used to deploy the NGFW's"
   type        = string
-  default     = "Palo Alto Networks VM-Series Next-Generation Firewall (BYOL)"
+  default     = "Palo Alto Networks VM-Series Next-Generation Firewall"
 }
 
 variable "firewall_image_version" {
   description = "The firewall image version specific to the NGFW vendor image"
   type        = string
-  default     = "10.0.4"
+  default     = "10.1.4"
 }
 
 variable "firewall_username" {
