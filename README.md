@@ -10,6 +10,7 @@ This module deploys a Aviatrix Transit FireNet VCN and an Aviatrix transit gatew
 ### Compatibility
 Module version | Terraform version | Controller version | Terraform provider version
 :--- | :--- | :--- | :---
+v5.0.1 | 0.13 - 1.x | >=6.6.5404 | >=2.21.1
 v5.0.0 | 0.13 - 1.x | >=6.6 | >=2.21.0
 v4.0.4 | 0.13, 0.14, 0.15 | >=6.4 | 2.19.5
 v4.0.3 | 0.13, 0.14, 0.15 | >=6.4 | 2.19.4
