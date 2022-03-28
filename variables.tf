@@ -58,7 +58,7 @@ variable "suffix" {
 variable "firewall_image" {
   description = "The firewall image to be used to deploy the NGFW's"
   type        = string
-  default     = "Palo Alto Networks VM-Series Next-Generation Firewall"
+  default     = "Palo Alto Networks VM-Series Next Generation Firewall"
 }
 
 variable "firewall_image_version" {
